@@ -35,6 +35,31 @@ public class Solution {
         return null;
     }
 
+    // Input array is sorted
+    // https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/
+    public int[] twoSumOrdered(int[] num, int target) {
+        int[] indice = new int[2];
+        if(num == null || num.length < 2) {
+            return indice; 
+        }
+        int left = 0;
+        int right = num.length - 1;
+        while(left < right) {
+            int sum = num[left] + num[right];
+            if(sum == target) {
+                indice[0] = left;
+                indice[1] = right;
+                return indice;
+            } else if(sum < target) {
+                left++;
+            } else {
+                right--; 
+            }
+
+        }
+        return indice;
+    }
+
     public static void main(String[] args) {
         Solution solution = new Solution();
         int[] nums = new int[]{2, 7, 11, 15};
